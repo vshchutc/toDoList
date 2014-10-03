@@ -17,7 +17,8 @@ $(document).ready(function() {
 				$("#itLeft").append(totActive);
 				$("#total").css( "visibility", "visible" );
 			}
-			
+			$("#clear").empty();
+			$("#clear").append(totCompleted);
 			$("#textBox").val("");
 		};
 	});
@@ -31,6 +32,9 @@ $(document).ready(function() {
 			totActive=0;
 			$("#itLeft").empty();
 			$("#itLeft").append(totActive);
+			$("#clear").empty();
+			$("#clear").append(totCompleted);
+			
 			$(".chBx").parent().parent().find(".taskText").css( "text-decoration", "line-through" );
 			$(".chBx").parent().parent().find(".taskText").css( "color", "grey" );
 			
@@ -41,6 +45,8 @@ $(document).ready(function() {
 			totActive=totTask;
 			$("#itLeft").empty();
 			$("#itLeft").append(totActive);
+			$("#clear").empty();
+			$("#clear").append(totCompleted);
 			$(".chBx").parent().parent().find(".taskText").css( "text-decoration", "none" );
 			$(".chBx").parent().parent().find(".taskText").css( "color", "black" );
 			
@@ -52,9 +58,21 @@ $(document).ready(function() {
 	$(document).on("change", ".chBx",function() {
 			var check=this.checked;
 			if(check){
+			totActive--;
+			totCompleted++;
+			$("#itLeft").empty();
+			$("#itLeft").append(totActive);
+			$("#clear").empty();
+			$("#clear").append(totCompleted);
 				$(this).parent().parent().find(".taskText").css( "text-decoration", "line-through" );
 				$(this).parent().parent().find(".taskText").css( "color", "grey" );
 			} else {
+				totActive++;
+				totCompleted--;
+				$("#itLeft").empty();
+				$("#itLeft").append(totActive);
+				$("#clear").empty();
+				$("#clear").append(totCompleted);
 				$(this).parent().parent().find(".taskText").css( "text-decoration", "none" );
 				$(this).parent().parent().find(".taskText").css( "color", "black" );
 		};
@@ -67,8 +85,8 @@ $(document).ready(function() {
 		 $("#itLeft").empty();
 		 $("#itLeft").append(totActive);
 		 if(totTask == 0){
-			$("#total").css( "visibility", "hidden" );			
-		 }
+			$("#total").css( "visibility", "hidden" );	
+			}
 		});
 		
 	
