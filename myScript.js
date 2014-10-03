@@ -43,7 +43,7 @@ $(document).ready(function() {
 		};
 	});	
 	
-	$(document).on("click", "button",function() {
+	$(document).on("click", ".dlBx",function() {
 		 $(this).parent().parent().remove();
 		});
 	
