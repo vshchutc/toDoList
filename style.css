@@ -1,0 +1,76 @@
+body{
+	background-color:#CDFAF2;
+}
+.main{
+	margin-left: 50%;
+	margin-top: 8%;
+	left:-250px;
+	width: 500px;
+	position:relative;
+	border-radius: 5px;
+	border-color:#9b7247;
+	font-family: helvetica, sans-serif;
+	color: #2B2219;
+	background-color:#E9F5F3;
+	border:1px solid #CBCCC8;
+	box-shadow: 2px 2px 5px #888888;
+	text-align:center;
+	display: inline-table;
+}
+.inputTxt{
+border-top:none;
+width: 330px;
+background-color:#F7E9C1;
+border-bottom:0px dotted #9b7247;
+
+}
+.task{
+border-top:1px dotted #9b7247;
+background-color: #e9f5f3;
+border-bottom:1px dotted #9b7247;
+}
+.inputTxt,.task {
+display: table-row;
+height:40px;
+border-left:none;
+border-right:none;
+
+line-height:35px;
+font-size:25px;
+margin:2px 0 0 2px;
+}
+.done {
+width:60px;
+border-top:none;
+border-bottom:1px dotted #9b7247;
+border-left:none;
+border-right:2px double #FCB1A9;
+display:inline-block;
+
+}
+.del {
+width:60px;
+height:35px;
+border:2px solid grey;
+display:inline-block;
+border-bottom:1px dotted #9b7247;
+border-right:none;
+border-left:2px double #FCB1A9;
+border-top:none;
+}
+.taskText {
+	width:330px;
+	display:inline-block;
+	border-top:none;
+	border-bottom:1px dotted #9b7247;
+	margin:0 0 0 0;
+}
+#mainCheck {
+margin:0 0 0 0;
+}
+#taskInput, #taskInput>.task  {
+	margin:0 0 0 0;
+	padding:0 0 0 0;
+	border-bottom:1px solid #636269;
+	background-color:#F7E9C1;
+}
