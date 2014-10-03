@@ -1,5 +1,7 @@
 $(document).ready(function() {
-	
+	var totTask=0;
+	var totCompleted=0;
+	var totActive=0;
 	$('#textBox').keyup(function(e){
 		if(e.keyCode == 13){
 			var enteredString = $('#textBox').val();
@@ -9,6 +11,10 @@ $(document).ready(function() {
 				$('#taskKeeper').append('<div class="task"><div class="done"><input type="checkbox" name="test"'+ 
 				'class ="chBx"></div><div class="taskText">' + trimedString + 
 				'</div><div class = "del"><button class = "dlBx">X</button></div>');
+				totTask=$(".chBx").length;
+				totActive++;
+				$("#itLeft").empty();
+				$("#itLeft").append(totActive);
 				$("#total").css( "visibility", "visible" );
 			}
 			
@@ -21,12 +27,23 @@ $(document).ready(function() {
 		
 		if(a){
 			$(".chBx").prop("checked", true);
+			totCompleted=totTask;
+			totActive=0;
+			$("#itLeft").empty();
+			$("#itLeft").append(totActive);
 			$(".chBx").parent().parent().find(".taskText").css( "text-decoration", "line-through" );
 			$(".chBx").parent().parent().find(".taskText").css( "color", "grey" );
+			
+			
 			} else {
 			$(".chBx").prop("checked", false);
+			totCompleted=0;
+			totActive=totTask;
+			$("#itLeft").empty();
+			$("#itLeft").append(totActive);
 			$(".chBx").parent().parent().find(".taskText").css( "text-decoration", "none" );
 			$(".chBx").parent().parent().find(".taskText").css( "color", "black" );
+			
 			
 		};
 	});
@@ -41,10 +58,18 @@ $(document).ready(function() {
 				$(this).parent().parent().find(".taskText").css( "text-decoration", "none" );
 				$(this).parent().parent().find(".taskText").css( "color", "black" );
 		};
+		
 	});	
 	
 	$(document).on("click", ".dlBx",function() {
 		 $(this).parent().parent().remove();
+		 totTask=$(".chBx").length;
+		 $("#itLeft").empty();
+		 $("#itLeft").append(totActive);
+		 if(totTask == 0){
+			$("#total").css( "visibility", "hidden" );			
+		 }
 		});
+		
 	
 });
