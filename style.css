@@ -74,3 +74,6 @@ margin:0 0 0 0;
 	border-bottom:1px solid #636269;
 	background-color:#F7E9C1;
 }
+#total {
+	visibility:hidden;
+	}

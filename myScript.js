@@ -9,6 +9,7 @@ $(document).ready(function() {
 				$('#taskKeeper').append('<div class="task"><div class="done"><input type="checkbox" name="test"'+ 
 				'class ="chBx"></div><div class="taskText">' + trimedString + 
 				'</div><div class = "del"><button class = "dlBx">X</button></div>');
+				$("#total").css( "visibility", "visible" );
 			}
 			
 			$("#textBox").val("");
