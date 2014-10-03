@@ -12,17 +12,35 @@ $(document).ready(function() {
 			}
 			
 			$("#textBox").val("");
-		}
+		};
 	});
 	
 	$("#mainCheck").change(function(){
 		var a=this.checked;	
+		
 		if(a){
 			$(".chBx").prop("checked", true);
+			$(".chBx").parent().parent().find(".taskText").css( "text-decoration", "line-through" );
+			$(".chBx").parent().parent().find(".taskText").css( "color", "grey" );
 			} else {
 			$(".chBx").prop("checked", false);
+			$(".chBx").parent().parent().find(".taskText").css( "text-decoration", "none" );
+			$(".chBx").parent().parent().find(".taskText").css( "color", "black" );
+			
 		};
 	});
+	
+	
+	$(document).on("change", ".chBx",function() {
+			var check=this.checked;
+			if(check){
+				$(this).parent().parent().find(".taskText").css( "text-decoration", "line-through" );
+				$(this).parent().parent().find(".taskText").css( "color", "grey" );
+			} else {
+				$(this).parent().parent().find(".taskText").css( "text-decoration", "none" );
+				$(this).parent().parent().find(".taskText").css( "color", "black" );
+		};
+	});	
 	
 	$(document).on("click", "button",function() {
 		 $(this).parent().parent().remove();
