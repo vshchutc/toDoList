@@ -2,6 +2,7 @@ $(document).ready(function() {
 	var totalTask=0;
 	var totalCompletedTasks=0;
 	var totalActiveTask=0;
+	var filter ="";
 	$('#mainCheck').prop('checked', false);
 	
 	function totalTaskNullHideBar(){
@@ -9,6 +10,20 @@ $(document).ready(function() {
 			$("#total").show("slow");
 		}else{$("#total").hide("slow");}
 	};
+	
+	function checkFilterState(){
+		var activeFilter=$(".activeFilter").text();
+		if(activeFilter=="All "){
+			$("task").show();
+		} else if(activeFilter==" Active "){
+			$(".chBx:not('checked')").parents('.task').show();
+			$(".chBx:checked").parents('.task').hide();
+		} else if (activeFilter==" Completed"){
+			$(".chBx:not('checked')").parents('.task').hide();
+			$(".chBx:checked").parents('.task').show();
+		};
+			
+	}
 	
 	totalTaskNullHideBar();
 	
@@ -34,6 +49,7 @@ $(document).ready(function() {
 		var testChecked=this.checked;	
 		if(testChecked){
 			$(".chBx").prop("checked", true);
+			checkFilterState();
 			totalCompletedTasks=totalTask;
 			totalActiveTask=0;
 			$("#itLeft").html(totalActiveTask);
@@ -41,6 +57,7 @@ $(document).ready(function() {
 			$(".chBx").parents(".task").find(".taskText").addClass( "checkedTask" );
 		} else {
 			$(".chBx").prop("checked", false);
+			checkFilterState();
 			totalCompletedTasks=0;
 			totalActiveTask=totalTask;
 			$("#itLeft").html(totalActiveTask);
@@ -52,12 +69,14 @@ $(document).ready(function() {
 	$(document).on("change", ".chBx",function() {
 		var isChecked=this.checked;
 		if(isChecked){
+		checkFilterState();
 		totalActiveTask--;
 		totalCompletedTasks++;
 		$("#itLeft").html(totalActiveTask);
 		$("#clear").html(totalCompletedTasks);
 		$(this).parents(".task").find(".taskText").addClass( "checkedTask" );
 		} else {
+			checkFilterState();
 			$('#mainCheck').prop('checked', false);
 			totalActiveTask++;
 			totalCompletedTasks--;
@@ -77,22 +96,22 @@ $(document).ready(function() {
 	});
 	
 	$(document).on("click", "#all",function() {
-		$('#active,#completed').css("font-weight", "normal");
-		$('#all').css("font-weight", "bold");
+		$('#active,#completed').removeClass("activeFilter");
+		$('#all').addClass("activeFilter");
 		$(".chBx").parents(".task").show();
 		});
 		
 	$(document).on("click", "#active",function() {
-		$('#all,#completed').css("font-weight", "normal");
-		$('#active').css("font-weight", "bold");
+		$('#all,#completed').removeClass("activeFilter");
+		$('#active').addClass("activeFilter");
 		$(".chBx:not('checked')").parents('.task').show();
 		$(".chBx:checked").parents('.task').hide();
 	});
 		
 	$(document).on("click", "#completed",function() {
-		//$(document).change(".chBx", function(){
-			$('#all,#active').css("font-weight", "normal");
-			$('#completed').css("font-weight", "bold");
+			filter=
+			$('#all,#active').removeClass("activeFilter");
+			$('#completed').addClass("activeFilter");
 			$(".chBx:not('checked')").parents('.task').hide();
 			$(".chBx:checked").parents('.task').show();
 		//});

@@ -110,3 +110,11 @@ margin:0 0 0 0;
 text-decoration: line-through;
 color: grey;
 }
+
+.filters{
+	cursor:pointer;
+	font-weight:normal;
+}
+.activeFilter{
+	font-weight:bold;
+}
