@@ -75,7 +75,6 @@ margin:0 0 0 0;
 	background-color:#F7E9C1;
 }
 #total {
-	visibility:hidden;
 	width:500px;
 	}
 #itemLeft{
@@ -107,3 +106,7 @@ margin:0 0 0 0;
 	top:-2px;
 	position:relative;
 	}
+.checkedTask {
+text-decoration: line-through;
+color: grey;
+}
